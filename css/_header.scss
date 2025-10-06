@@ -1,0 +1,168 @@
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+@use "setting" as s;
+/*除算用にmathモジュールをインポート*/
+@use "sass:math";
+
+/* ここから記述します。 */
+.header{
+    position: fixed;
+    width: 100%;
+    height: 120px;
+    z-index: 20;
+
+    .header-inner{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 30px;
+
+        .header-logo{
+            width: 130px;
+        }
+
+        .header-nav{
+            display: flex;
+            align-items: center;
+            gap: 36px;
+
+            .nav-item{
+                font-size: 16px;
+                font-weight: bold;
+            }
+        }
+
+        .hamburger-menu{
+            display: none;
+
+            @include s.mq('sp'){
+                display: block;
+            }
+        }
+    }
+
+    @include s.mq('sp'){
+        width: 100%;
+        height: 72px;
+        background-color: #{s.$colorWhite};
+        z-index: 100;
+
+        .header-inner{
+            height: 72px;
+
+            .header-logo img{
+                height: 55px;
+                width: 68px;
+            }
+
+            .header-nav{
+                display: none;
+            }
+        }   
+    }
+}
+.header__toggleBtn {
+    display: none;
+
+    @include s.mq("sp") {
+        display: block;
+        width: 42px;
+        height: 24px;
+        position: relative;
+        transition: all 0.5s;
+        cursor: pointer;
+        z-index: 20;
+    }
+}
+
+.header__hamburgerLine {
+    display: block;
+    position: absolute;
+    width: 42px;
+    height: 3px;
+    background-color: s.$colorBlue;
+    border-radius: 3px;
+    transition: all 0.5s;
+}
+
+.header__hamburgerLine:nth-child(1) {
+    top: -3px;
+}
+
+.header__hamburgerLine:nth-child(2) {
+    top: 9px;
+}
+
+.header__hamburgerLine:nth-child(3) {
+    top: 21px;
+}
+
+.js-open {
+    .header__hamburgerLine:nth-child(1) {
+        transform: translateY(11px) rotate(-45deg);
+    }
+
+    .header__hamburgerLine:nth-child(2) {
+        transform: translateY(-1px) rotate(45deg);
+    }
+
+    .header__hamburgerLine:nth-child(3) {
+        display: none;
+    }
+}
+
+.header__mask {
+    background: transparent url(../image/overlay.png) no-repeat top
+        center / cover;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    right: -120%;
+    top: 72px;
+    transition: all 0.5s;
+}
+
+.header__maskNav {
+    margin-top: 80px;
+    margin-left: percentage(math.div(48, 420));
+    color: s.$colorBlue;
+    font-weight: 700;
+}
+
+.header__maskList {
+    margin-top: 42px;
+}
+
+.header__maskList:first-of-type {
+    margin-top: 0;
+}
+
+.header__maskList:last-of-type {
+    margin-top: 48px;
+}
+
+.header__maskWrap {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header__maskLink--sns:first-of-type {
+    width: 33px;
+    height: 30px;
+}
+
+.header__maskLink--sns:last-of-type {
+    width: 33.25px;
+    height: 33.25px;
+}
+
+.js-open {
+    .header__mask {
+        right: 0;
+        z-index: 10;
+    }
+}
+
+

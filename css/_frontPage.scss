@@ -1,0 +1,848 @@
+@use "setting" as s;
+/*除算用にmathモジュールをインポート*/
+@use "sass:math";
+
+/* ここから記述します。 */
+/*-------------------------------------------
+スライドレイアウト
+-------------------------------------------*/
+.slide{
+    position: relative;
+    width: 100%;
+    height: 720px;
+
+    @media screen and (min-width: 1390px) {
+        height: 900px;
+}
+    
+    .slide-list{
+        position: relative;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+
+        .slide-item{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            animation: slider 15s infinite;
+            opacity: 0;
+            overflow: hidden;
+
+            & img{
+                width: 100%;
+                height: 100%;
+                object-position: center;
+                object-fit: cover;
+                
+            }
+
+            &:nth-of-type(1){
+                animation-delay: 0s;
+            }
+
+            &:nth-of-type(2){
+                animation-delay: 5s;
+            }
+
+            &:nth-of-type(3){
+                animation-delay: 10s;
+            }
+        }
+
+        @include s.mq('sp'){
+            height: 550px;
+        }
+    }
+
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 600px;
+        background: url(../image/bubble.png) no-repeat top / cover;
+        width: 350px;
+        height: 560px;
+
+        @include s.mq('sp'){
+            width: 230px;
+            height: 300px;
+            top: 660px;
+        }
+    }
+}
+
+@keyframes slider {
+                0%{
+                    opacity: 0;
+                }
+
+                30%{
+                    opacity: 1;
+                }
+
+                40%{
+                    opacity: 1;
+                }
+
+                50%{
+                    opacity: 0;
+                }
+                
+                100%{
+                    opacity: 0;
+                }
+                
+            }
+
+.title-wrap{
+    position: absolute;
+    z-index: 10;
+    top: 348px;
+    left: 8%;
+
+    @include s.mq('sp'){
+        width: 340px;
+        top: 527px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+
+    & h1{
+        color: #{s.$colorBlue};
+        font-size: 40px;
+        font-weight: bold;
+
+        @include s.mq('sp'){
+            font-size: 32px;
+        }
+
+        &:first-of-type{
+            position: relative;
+        }
+
+        &:first-of-type::after{
+            content: '';
+            display: block;
+            position: absolute;
+            top: 20px;
+            left: 220px;
+            background:transparent url(../image/title-image.png) no-repeat center /cover;
+            width: 26px;
+            height: 27px;
+        }
+    }
+}
+
+/*-------------------------------------------
+「信頼の技術とサポート」レイアウト
+-------------------------------------------*/
+.support{
+    margin: 0 auto;
+    padding: 110px 100px;
+    max-width: 1240px;
+
+    .support-inner{
+        display: flex;
+        height: 670px;
+        justify-content: space-between;
+
+        .support-left{
+            display: flex;
+            flex-direction: column;
+            width: 46%;
+
+            & img{
+                object-fit: contain;
+                object-position: top;
+                width: 100%;
+                z-index: 2;
+            }
+
+            .support-imgContainer{
+                position: relative;
+                display: flex;
+                width: 100%;
+                height: 100%;
+
+                & img:nth-child(1){
+                    position: absolute;
+                    width: 225px;
+                    height: 265px;
+                    object-fit: contain;
+                    top: 90px;
+                    left: -100px;
+                }
+
+                & img:nth-child(2){
+                    position: absolute;
+                    width: 330px;
+                    height: 330px;
+                    top: 0;
+                    left: 100px;
+                }
+            }
+        }
+
+        .support-right{
+            display: flex;
+            width: 43%;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .support-textContainer{
+                display: flex;
+                flex-direction: column;
+                gap: 26px;
+
+                .support-title{
+                    font-size: 32px;
+                    font-weight: bold;
+                    color: #{s.$colorBlue};
+                }
+            }
+
+            & img{
+                object-fit: contain;
+            }
+        }
+    }
+
+    @include s.mq('sp'){
+            padding: 0;
+
+        .support-inner{
+            flex-direction: column;
+            align-items: center;
+            padding: 80px 15px;
+            gap: 400px;
+            height: 100%;
+
+            .support-left{
+                width: 100%;
+                height: 100%;
+
+                .support-imgContainer img:nth-child(1){
+                    width: 200px;
+                    height: 220px;
+                    top: 100px;
+                    left: -20px;
+                }
+
+                .support-imgContainer img:nth-child(2){
+                    width: 200px;
+                    height: 200px;
+                    top: 40px;
+                    left: auto;
+                    right: 10px;
+                }
+            }
+
+            .support-right{
+                width: 100%;
+                gap: 23px;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------
+「SERVICE」レイアウト
+-------------------------------------------*/
+.service{
+    width: 100%;
+    background-color: #f6f8fa;
+    position: relative;
+
+    &-inner{
+        padding: 64px 100px 100px;
+
+        @include s.mq('sp'){
+            padding: 80px 15px;
+        }
+
+        .service-grid{
+            margin-top: 48px;
+            display: flex;
+            gap: 75px;
+            justify-content: center;
+
+            @include s.mq('sp'){
+                margin-top: 15px;
+                flex-direction: column;
+                gap: 48px;
+            }
+
+
+            .service-gridItem{
+                display: flex;
+                flex-direction: column;
+                width: 310px;
+                gap: 20px;
+
+                @include s.mq('sp'){
+                    width: 100%;
+
+                    .btn-wrap{
+                        margin: 0 auto;
+                    }
+
+                }
+
+                &:nth-of-type(2){
+                    margin-top: 24px;
+
+                    @include s.mq('sp'){
+                        margin-top: 0;
+                    }
+                }
+
+                .service-gridImg{
+                    max-width: 310px;
+                    max-height: 357px;
+                    border-radius: 8px;
+                    box-shadow: 4px 4px 10px rgba(39, 43, 48, 0.18);
+
+                    @include s.mq('sp'){
+                        margin: 0 auto;
+                    }
+                }
+
+                .service-gridTitle{
+                        font-size: 24px;
+                        color: s.$colorBlue;
+                        font-weight: bold;
+                        text-align: center;
+                    }
+            }
+        }
+    }
+
+    &::before{
+        content: '';
+        display: block;
+        background: url(../image/service-bg01.png) no-repeat top center / cover;
+        width: 100%;
+        height: 110px;
+        position: absolute;
+        left: 0;
+        top: -50px;
+
+        @include s.mq('sp'){
+            height: 54px;
+        }
+
+    }
+
+    &::after{
+        position: absolute;
+        content: '';
+        display: block;
+        left: 0;
+        bottom: -50px;
+        background: url(../image/service-bg02.png) no-repeat top center / cover;
+        width: 100%;
+        height: 110px;
+
+        @include s.mq('sp'){
+            height: 54px;
+        }
+    }
+}
+
+
+/*-------------------------------------------
+「ABOUT」レイアウト
+-------------------------------------------*/
+.about{
+    position: relative;
+
+    &-inner{
+        margin: 100px auto 0;
+        padding: 110px 100px;
+        max-width: 1080px;
+
+        @include s.mq('sp'){
+            padding: 80px 15px;
+        }
+
+        .about-titleWrap{
+            margin-left: 500px;
+            margin-bottom: 30px;
+
+            @include s.mq('sp'){
+                margin-left: 0;
+            }
+        }
+
+        .about-content{
+            display: flex;
+            justify-content: center;
+
+            @include s.mq('sp'){
+            flex-direction: column;
+            }
+
+            .about-leftImg{
+                object-fit: content;
+                width: 600px;
+                height: 500px;
+                z-index: -2;
+
+                @include s.mq('sp'){
+                    width: 100%;
+                    height: auto;
+                    margin-bottom: 20px;
+                }
+            }
+
+            .about-right{
+                display: flex;
+                flex-direction: column;
+                width: 412px;
+                height: auto;
+                gap: 26px;
+                margin-left: -40px;
+
+                @include s.mq('sp'){
+                    width: 100%;
+                    margin-left: 0;
+                }
+
+                .section-textWrap{
+                    margin-bottom: 60px;
+
+                    .section-textTitle{
+                        font-size: 24px;
+                        font-weight: bold;
+                        color: s.$colorBlue;
+                        margin-bottom: 16px;
+
+                        @include s.mq('sp'){
+                            margin-bottom: 12px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &::before{
+        content: '';
+        display: block;
+        background: url(../image/about-img.png) no-repeat top center / cover;
+        width: 237px;
+        height: 185px;
+        position: absolute;
+        left: 50px;
+        top: -130px;
+
+        @include s.mq('sp'){
+            left: 10px;
+            width: 135px;
+            height: 105px;
+        }
+    }
+
+    &::after{
+        content: '';
+        display: block;
+        background: url(../image/about-bubble.png) no-repeat center / cover;
+        right: 0;
+        top: -130px;
+        position: absolute;
+        width: 250px;
+        height: 475px;
+
+        @include s.mq('sp'){
+            width: 100px;
+            height: 185px;
+        }
+    }
+}
+
+
+/*-------------------------------------------
+「会社理念・会社概要」レイアウト
+-------------------------------------------*/
+.company-grid{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include s.mq('sp'){
+        grid-template-columns: 1fr;
+    }
+
+    &Item{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: 236px;
+        padding: 0 100px;
+
+        @include s.mq('sp'){
+            height: 150px;
+            padding: 32px;
+        }
+
+        &:first-of-type{
+            background: url(../image/philosophy.png) no-repeat top center / cover;
+            transition: 0.5s;
+
+            &:hover .company-arrow img{
+                transform: translateX(30px);
+            }
+
+            &:hover {
+                filter: grayscale(60%);
+            }
+        }
+
+        &:last-of-type{
+            background: url(../image/company.png) no-repeat top center / cover;
+            transition: 0.5s;
+
+            &:hover .company-arrow img{
+                transform: translateX(30px);
+            }
+
+            &:hover{
+                filter: grayscale(60%);
+            }
+        }
+
+        .grid-title{
+            font-size: 36px;
+            font-weight: bold;
+            letter-spacing: 0.08em;
+            color: s.$colorWhite;
+
+            @include s.mq('sp'){
+                font-size: 24px;
+            }
+        }
+
+        .grid-text{
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: s.$colorWhite;
+        }
+
+        .company-arrow{
+            width: 24px;
+            height: 24px;
+            margin-top: 32px;
+
+            img{
+                transition: 0.5s ease; 
+            }
+
+            @include s.mq('sp'){
+                width: 20px;
+                height: 20px;
+            }
+        }
+    }
+}
+
+/*-------------------------------------------
+「STAFF」レイアウト
+-------------------------------------------*/
+.staff{
+    padding: 121px 0 121px 222px;
+    position: relative;
+    background: url(../image/staff-bg.png) no-repeat center / cover;
+
+    @include s.mq('sp'){
+        padding: 80px 15px;
+        background: url(../image/staff-bg-sp.png) no-repeat center / cover;
+    }
+
+    .staff-inner{
+        display: flex;
+        gap: 60px;
+
+        @include s.mq('sp'){
+            flex-direction: column-reverse;
+            gap: 121px;
+        }
+
+        .staff-content{
+            width: 40%;
+
+            @include s.mq('sp'){
+                width: 100%;
+            }
+        }
+
+        .staff-img{
+            width: 60%;
+            margin-top: 40px;
+
+            @include s.mq('sp'){
+                width: 100%;
+            }
+        }
+    }
+
+    &::before{
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../image/staff-bubble.png) no-repeat center / contain;
+        width: 400px;
+        height: 400px;
+        top: 80px;
+        left: -100px;
+
+        @include s.mq('sp'){
+            background: url(../image/staff-bubble-sp.png) no-repeat center / cover;
+            width: 80px;
+            height: 120px;
+            left: auto;
+            right: 0;
+            top: auto;
+            bottom: -50px;
+        }
+    }
+
+    &::after{
+        content: '';
+        display: block;
+        position: absolute;
+        background: url(../image/staff-art.png) no-repeat center / contain;
+        width: 290px;
+        height: 150px;
+        top: 550px;
+        left: 200px;
+
+        @include s.mq('sp'){
+            width: 180px;
+            height: 80px;
+            left: auto;
+            right: 20px;
+            top: 500px;
+        }
+    }
+}
+
+
+/*-------------------------------------------
+「RECRUIT」レイアウト
+-------------------------------------------*/
+.recruit{
+    position: relative;
+
+    .recruit-inner{
+        display: flex;
+        padding: 220px 0;
+        gap: 60px;
+
+        @include s.mq('sp'){
+            padding: 80px 0;
+            flex-direction: column;
+            gap: 112px;
+        }
+
+        .recruit-imgWrap{
+            width: 50%;
+
+            @include s.mq('sp'){
+                width: 100%;
+            }
+
+        }
+
+        .recruit-right{
+            width: 50%;
+
+            @include s.mq('sp'){
+                width: 100%;
+                padding: 0 15px;
+            }
+
+            .recruit-textWrap{
+                margin-right: 170px;
+
+                @include s.mq('sp'){
+                    margin-right: 0;
+                }
+            }
+
+            .recruit-btn{
+                margin-right: 170px;
+
+                @include s.mq('sp'){
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+
+    &::before{
+        content: '';
+        display: block;
+        background: url(../image/recruit-art.png) no-repeat center / cover;
+        width: 300px;
+        height: 200px;
+        position: absolute;
+        bottom: 100px;
+        right: 380px;
+
+        @include s.mq('sp'){
+            width: 140px;
+            height: 80px;
+            right: 10px;
+            top: 480px;
+            bottom: auto;
+        }
+    }
+
+    &::after{
+        content: '';
+        display: block;
+        background: url(../image/recruit-bubble.png) no-repeat center / contain;
+        position: absolute;
+        width: 200px;
+        height: 410px;
+        right: 0;
+        bottom: 20px;
+
+        @include s.mq('sp'){
+            width: 80px;
+            height: 120px;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}
+
+.js-fadeIn {
+    position: relative;
+    opacity: 0;
+    transform: translateY(150px);
+    transition: opacity 2s, transform 0.5s ease-in-out;
+}
+
+.js-fadeIn.is-scrollIn {
+    opacity: 1;
+    transform: translate(0);
+}
+
+
+/*-------------------------------------------
+「お問い合わせ」レイアウト
+-------------------------------------------*/
+.contact{
+
+    .contact-inner{
+        background: url(../image/contact-bg.png) no-repeat center / cover;
+        width: 100%;
+        height: 356px;
+        margin-bottom: 184px;
+        position: relative;
+
+        @include s.mq("sp") {
+        height: 272px;
+        background:  url(../image/contact-bg-sp.png) no-repeat center /
+            cover;
+        margin-bottom: 208px;
+    }
+
+        .contact-content{
+            display: flex;
+            position: absolute;
+            top: 90px;
+            left: 50%;
+            transform: translate(-50%, 0);
+            height: 360px;
+            width: 995px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 4px 4px 10px rgba(39, 43, 48, 0.18);
+
+            @include s.mq('sp'){
+                flex-direction: column-reverse;
+                top: 48px;
+                border-radius: 4px;
+                box-shadow: 2px 2px 3px 0px rgb(32, 37, 41, 0.18);
+                width: 100%;
+                padding: 24px 15px;
+                border-radius: 0 0 4px 4px;
+            }
+
+
+            .contact-textWrap{
+                width: 50%;
+                padding: 0 42px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 48px;
+                background-color: s.$colorWhite;
+
+                @include s.mq("sp") {
+                    width: 100%;
+                    font-size: 15px;
+                    line-height: 1.65;
+                    padding: 16px 24px;
+
+                    .btn-wrap{
+                        margin: 0 auto;
+                    }
+                }
+            }
+
+            .contact-img{
+                width: 50%;
+
+                &img{
+                    width: 100%;
+                    height: auto;
+                    
+                }
+
+                @include s.mq("sp") {
+                        width: 100%;
+
+                    &img{
+                        height: 182px;
+                    }
+                }
+            }
+
+        }
+    }
+}
+.contact__inner.js-fadeIn {
+    transform: translate(-50%, 150px);
+}
+
+.contact__inner.js-fadeIn.is-scrollIn {
+    transform: translate(-50%, 0);
+}
+
+
+
+/*-------------------------------------------
+「トップアイコン」レイアウト
+-------------------------------------------*/
+.top__icon {
+    position: fixed;
+    right: 15px;
+    bottom: 40px;
+    opacity: 0;
+    z-index: 100;
+}
+
+.top__iconLink {
+    display: inline-block;
+    width: 68px;
+    height: 68px;
+}

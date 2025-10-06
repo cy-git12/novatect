@@ -1,0 +1,1350 @@
+@charset "UTF-8";
+/*-------------------------------------------
+共通クラス
+-------------------------------------------*/
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  line-height: 1.5;
+  color: #333a3f;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+
+/*-------------------------------------------
+共通のパーツ
+-------------------------------------------*/
+/* ここから記述します。 */
+.section-titleWrap .section-title {
+  font-size: 36px;
+  color: #18669e;
+  font-weight: bold;
+  position: relative;
+  line-height: 150%;
+  letter-spacing: 0.08em;
+}
+@media screen and (max-width: 821px) {
+  .section-titleWrap .section-title {
+    font-size: 32px;
+  }
+}
+.section-titleWrap .section-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: -50px;
+  background: transparent url(../image/title-image.png) no-repeat center/cover;
+  width: 26px;
+  height: 27px;
+}
+@media screen and (max-width: 821px) {
+  .section-titleWrap .section-title::before {
+    top: -30px;
+    left: 0;
+  }
+}
+.section-titleWrap .section-subTitle {
+  font-size: 16px;
+  color: #f1c11a;
+}
+
+.section-text01 {
+  margin: 35px 0;
+}
+
+.btn-wrap {
+  width: 258px;
+  height: 54px;
+  gap: 0;
+  font-size: 14px;
+}
+.btn-wrap:hover .btn img {
+  -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.btn {
+  display: inline-block;
+  padding: 18px 62px;
+  background-color: #5f82b3;
+  color: #fff;
+  border-radius: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.btn img {
+  width: 37px;
+  height: 4px;
+}
+
+/*-------------------------------------------
+ヘッダー
+-------------------------------------------*/
+/*除算用にmathモジュールをインポート*/
+/* ここから記述します。 */
+.header {
+  position: fixed;
+  width: 100%;
+  height: 120px;
+  z-index: 20;
+}
+.header .header-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 30px;
+}
+.header .header-inner .header-logo {
+  width: 130px;
+}
+.header .header-inner .header-nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 36px;
+}
+.header .header-inner .header-nav .nav-item {
+  font-size: 16px;
+  font-weight: bold;
+}
+.header .header-inner .hamburger-menu {
+  display: none;
+}
+@media screen and (max-width: 821px) {
+  .header .header-inner .hamburger-menu {
+    display: block;
+  }
+}
+@media screen and (max-width: 821px) {
+  .header {
+    width: 100%;
+    height: 72px;
+    background-color: #fff;
+    z-index: 100;
+  }
+  .header .header-inner {
+    height: 72px;
+  }
+  .header .header-inner .header-logo img {
+    height: 55px;
+    width: 68px;
+  }
+  .header .header-inner .header-nav {
+    display: none;
+  }
+}
+
+.header__toggleBtn {
+  display: none;
+}
+@media screen and (max-width: 821px) {
+  .header__toggleBtn {
+    display: block;
+    width: 42px;
+    height: 24px;
+    position: relative;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+    z-index: 20;
+  }
+}
+
+.header__hamburgerLine {
+  display: block;
+  position: absolute;
+  width: 42px;
+  height: 3px;
+  background-color: #18669e;
+  border-radius: 3px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.header__hamburgerLine:nth-child(1) {
+  top: -3px;
+}
+
+.header__hamburgerLine:nth-child(2) {
+  top: 9px;
+}
+
+.header__hamburgerLine:nth-child(3) {
+  top: 21px;
+}
+
+.js-open .header__hamburgerLine:nth-child(1) {
+  -webkit-transform: translateY(11px) rotate(-45deg);
+          transform: translateY(11px) rotate(-45deg);
+}
+.js-open .header__hamburgerLine:nth-child(2) {
+  -webkit-transform: translateY(-1px) rotate(45deg);
+          transform: translateY(-1px) rotate(45deg);
+}
+.js-open .header__hamburgerLine:nth-child(3) {
+  display: none;
+}
+
+.header__mask {
+  background: transparent url(../image/overlay.png) no-repeat top center/cover;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  right: -120%;
+  top: 72px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.header__maskNav {
+  margin-top: 80px;
+  margin-left: 11.4285714286%;
+  color: #18669e;
+  font-weight: 700;
+}
+
+.header__maskList {
+  margin-top: 42px;
+}
+
+.header__maskList:first-of-type {
+  margin-top: 0;
+}
+
+.header__maskList:last-of-type {
+  margin-top: 48px;
+}
+
+.header__maskWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 20px;
+}
+
+.header__maskLink--sns:first-of-type {
+  width: 33px;
+  height: 30px;
+}
+
+.header__maskLink--sns:last-of-type {
+  width: 33.25px;
+  height: 33.25px;
+}
+
+.js-open .header__mask {
+  right: 0;
+  z-index: 10;
+}
+
+/*除算用にmathモジュールをインポート*/
+/* ここから記述します。 */
+/*-------------------------------------------
+スライドレイアウト
+-------------------------------------------*/
+.slide {
+  position: relative;
+  width: 100%;
+  height: 720px;
+}
+@media screen and (min-width: 1390px) {
+  .slide {
+    height: 900px;
+  }
+}
+.slide .slide-list {
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+.slide .slide-list .slide-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: slider 15s infinite;
+          animation: slider 15s infinite;
+  opacity: 0;
+  overflow: hidden;
+}
+.slide .slide-list .slide-item img {
+  width: 100%;
+  height: 100%;
+  -o-object-position: center;
+     object-position: center;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.slide .slide-list .slide-item:nth-of-type(1) {
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+.slide .slide-list .slide-item:nth-of-type(2) {
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+.slide .slide-list .slide-item:nth-of-type(3) {
+  -webkit-animation-delay: 10s;
+          animation-delay: 10s;
+}
+@media screen and (max-width: 821px) {
+  .slide .slide-list {
+    height: 550px;
+  }
+}
+.slide::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 600px;
+  background: url(../image/bubble.png) no-repeat top/cover;
+  width: 350px;
+  height: 560px;
+}
+@media screen and (max-width: 821px) {
+  .slide::after {
+    width: 230px;
+    height: 300px;
+    top: 660px;
+  }
+}
+
+@-webkit-keyframes slider {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes slider {
+  0% {
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.title-wrap {
+  position: absolute;
+  z-index: 10;
+  top: 348px;
+  left: 8%;
+}
+@media screen and (max-width: 821px) {
+  .title-wrap {
+    width: 340px;
+    top: 527px;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+  }
+}
+.title-wrap h1 {
+  color: #18669e;
+  font-size: 40px;
+  font-weight: bold;
+}
+@media screen and (max-width: 821px) {
+  .title-wrap h1 {
+    font-size: 32px;
+  }
+}
+.title-wrap h1:first-of-type {
+  position: relative;
+}
+.title-wrap h1:first-of-type::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 220px;
+  background: transparent url(../image/title-image.png) no-repeat center/cover;
+  width: 26px;
+  height: 27px;
+}
+
+/*-------------------------------------------
+「信頼の技術とサポート」レイアウト
+-------------------------------------------*/
+.support {
+  margin: 0 auto;
+  padding: 110px 100px;
+  max-width: 1240px;
+}
+.support .support-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 670px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.support .support-inner .support-left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 46%;
+}
+.support .support-inner .support-left img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: top;
+     object-position: top;
+  width: 100%;
+  z-index: 2;
+}
+.support .support-inner .support-left .support-imgContainer {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+.support .support-inner .support-left .support-imgContainer img:nth-child(1) {
+  position: absolute;
+  width: 225px;
+  height: 265px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  top: 90px;
+  left: -100px;
+}
+.support .support-inner .support-left .support-imgContainer img:nth-child(2) {
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  top: 0;
+  left: 100px;
+}
+.support .support-inner .support-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 43%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+.support .support-inner .support-right .support-textContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 26px;
+}
+.support .support-inner .support-right .support-textContainer .support-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #18669e;
+}
+.support .support-inner .support-right img {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media screen and (max-width: 821px) {
+  .support {
+    padding: 0;
+  }
+  .support .support-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 80px 15px;
+    gap: 400px;
+    height: 100%;
+  }
+  .support .support-inner .support-left {
+    width: 100%;
+    height: 100%;
+  }
+  .support .support-inner .support-left .support-imgContainer img:nth-child(1) {
+    width: 200px;
+    height: 220px;
+    top: 100px;
+    left: -20px;
+  }
+  .support .support-inner .support-left .support-imgContainer img:nth-child(2) {
+    width: 200px;
+    height: 200px;
+    top: 40px;
+    left: auto;
+    right: 10px;
+  }
+  .support .support-inner .support-right {
+    width: 100%;
+    gap: 23px;
+  }
+}
+
+/*-------------------------------------------
+「SERVICE」レイアウト
+-------------------------------------------*/
+.service {
+  width: 100%;
+  background-color: #f6f8fa;
+  position: relative;
+}
+.service-inner {
+  padding: 64px 100px 100px;
+}
+@media screen and (max-width: 821px) {
+  .service-inner {
+    padding: 80px 15px;
+  }
+}
+.service-inner .service-grid {
+  margin-top: 48px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 75px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media screen and (max-width: 821px) {
+  .service-inner .service-grid {
+    margin-top: 15px;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 48px;
+  }
+}
+.service-inner .service-grid .service-gridItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 310px;
+  gap: 20px;
+}
+@media screen and (max-width: 821px) {
+  .service-inner .service-grid .service-gridItem {
+    width: 100%;
+  }
+  .service-inner .service-grid .service-gridItem .btn-wrap {
+    margin: 0 auto;
+  }
+}
+.service-inner .service-grid .service-gridItem:nth-of-type(2) {
+  margin-top: 24px;
+}
+@media screen and (max-width: 821px) {
+  .service-inner .service-grid .service-gridItem:nth-of-type(2) {
+    margin-top: 0;
+  }
+}
+.service-inner .service-grid .service-gridItem .service-gridImg {
+  max-width: 310px;
+  max-height: 357px;
+  border-radius: 8px;
+  -webkit-box-shadow: 4px 4px 10px rgba(39, 43, 48, 0.18);
+          box-shadow: 4px 4px 10px rgba(39, 43, 48, 0.18);
+}
+@media screen and (max-width: 821px) {
+  .service-inner .service-grid .service-gridItem .service-gridImg {
+    margin: 0 auto;
+  }
+}
+.service-inner .service-grid .service-gridItem .service-gridTitle {
+  font-size: 24px;
+  color: #18669e;
+  font-weight: bold;
+  text-align: center;
+}
+.service::before {
+  content: "";
+  display: block;
+  background: url(../image/service-bg01.png) no-repeat top center/cover;
+  width: 100%;
+  height: 110px;
+  position: absolute;
+  left: 0;
+  top: -50px;
+}
+@media screen and (max-width: 821px) {
+  .service::before {
+    height: 54px;
+  }
+}
+.service::after {
+  position: absolute;
+  content: "";
+  display: block;
+  left: 0;
+  bottom: -50px;
+  background: url(../image/service-bg02.png) no-repeat top center/cover;
+  width: 100%;
+  height: 110px;
+}
+@media screen and (max-width: 821px) {
+  .service::after {
+    height: 54px;
+  }
+}
+
+/*-------------------------------------------
+「ABOUT」レイアウト
+-------------------------------------------*/
+.about {
+  position: relative;
+}
+.about-inner {
+  margin: 100px auto 0;
+  padding: 110px 100px;
+  max-width: 1080px;
+}
+@media screen and (max-width: 821px) {
+  .about-inner {
+    padding: 80px 15px;
+  }
+}
+.about-inner .about-titleWrap {
+  margin-left: 500px;
+  margin-bottom: 30px;
+}
+@media screen and (max-width: 821px) {
+  .about-inner .about-titleWrap {
+    margin-left: 0;
+  }
+}
+.about-inner .about-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+@media screen and (max-width: 821px) {
+  .about-inner .about-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+}
+.about-inner .about-content .about-leftImg {
+  -o-object-fit: content;
+     object-fit: content;
+  width: 600px;
+  height: 500px;
+  z-index: -2;
+}
+@media screen and (max-width: 821px) {
+  .about-inner .about-content .about-leftImg {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}
+.about-inner .about-content .about-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 412px;
+  height: auto;
+  gap: 26px;
+  margin-left: -40px;
+}
+@media screen and (max-width: 821px) {
+  .about-inner .about-content .about-right {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+.about-inner .about-content .about-right .section-textWrap {
+  margin-bottom: 60px;
+}
+.about-inner .about-content .about-right .section-textWrap .section-textTitle {
+  font-size: 24px;
+  font-weight: bold;
+  color: #18669e;
+  margin-bottom: 16px;
+}
+@media screen and (max-width: 821px) {
+  .about-inner .about-content .about-right .section-textWrap .section-textTitle {
+    margin-bottom: 12px;
+  }
+}
+.about::before {
+  content: "";
+  display: block;
+  background: url(../image/about-img.png) no-repeat top center/cover;
+  width: 237px;
+  height: 185px;
+  position: absolute;
+  left: 50px;
+  top: -130px;
+}
+@media screen and (max-width: 821px) {
+  .about::before {
+    left: 10px;
+    width: 135px;
+    height: 105px;
+  }
+}
+.about::after {
+  content: "";
+  display: block;
+  background: url(../image/about-bubble.png) no-repeat center/cover;
+  right: 0;
+  top: -130px;
+  position: absolute;
+  width: 250px;
+  height: 475px;
+}
+@media screen and (max-width: 821px) {
+  .about::after {
+    width: 100px;
+    height: 185px;
+  }
+}
+
+/*-------------------------------------------
+「会社理念・会社概要」レイアウト
+-------------------------------------------*/
+.company-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media screen and (max-width: 821px) {
+  .company-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.company-gridItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+  height: 236px;
+  padding: 0 100px;
+}
+@media screen and (max-width: 821px) {
+  .company-gridItem {
+    height: 150px;
+    padding: 32px;
+  }
+}
+.company-gridItem:first-of-type {
+  background: url(../image/philosophy.png) no-repeat top center/cover;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.company-gridItem:first-of-type:hover .company-arrow img {
+  -webkit-transform: translateX(30px);
+          transform: translateX(30px);
+}
+.company-gridItem:first-of-type:hover {
+  -webkit-filter: grayscale(60%);
+          filter: grayscale(60%);
+}
+.company-gridItem:last-of-type {
+  background: url(../image/company.png) no-repeat top center/cover;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.company-gridItem:last-of-type:hover .company-arrow img {
+  -webkit-transform: translateX(30px);
+          transform: translateX(30px);
+}
+.company-gridItem:last-of-type:hover {
+  -webkit-filter: grayscale(60%);
+          filter: grayscale(60%);
+}
+.company-gridItem .grid-title {
+  font-size: 36px;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  color: #fff;
+}
+@media screen and (max-width: 821px) {
+  .company-gridItem .grid-title {
+    font-size: 24px;
+  }
+}
+.company-gridItem .grid-text {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #fff;
+}
+.company-gridItem .company-arrow {
+  width: 24px;
+  height: 24px;
+  margin-top: 32px;
+}
+.company-gridItem .company-arrow img {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+@media screen and (max-width: 821px) {
+  .company-gridItem .company-arrow {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/*-------------------------------------------
+「STAFF」レイアウト
+-------------------------------------------*/
+.staff {
+  padding: 121px 0 121px 222px;
+  position: relative;
+  background: url(../image/staff-bg.png) no-repeat center/cover;
+}
+@media screen and (max-width: 821px) {
+  .staff {
+    padding: 80px 15px;
+    background: url(../image/staff-bg-sp.png) no-repeat center/cover;
+  }
+}
+.staff .staff-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 60px;
+}
+@media screen and (max-width: 821px) {
+  .staff .staff-inner {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    gap: 121px;
+  }
+}
+.staff .staff-inner .staff-content {
+  width: 40%;
+}
+@media screen and (max-width: 821px) {
+  .staff .staff-inner .staff-content {
+    width: 100%;
+  }
+}
+.staff .staff-inner .staff-img {
+  width: 60%;
+  margin-top: 40px;
+}
+@media screen and (max-width: 821px) {
+  .staff .staff-inner .staff-img {
+    width: 100%;
+  }
+}
+.staff::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background: url(../image/staff-bubble.png) no-repeat center/contain;
+  width: 400px;
+  height: 400px;
+  top: 80px;
+  left: -100px;
+}
+@media screen and (max-width: 821px) {
+  .staff::before {
+    background: url(../image/staff-bubble-sp.png) no-repeat center/cover;
+    width: 80px;
+    height: 120px;
+    left: auto;
+    right: 0;
+    top: auto;
+    bottom: -50px;
+  }
+}
+.staff::after {
+  content: "";
+  display: block;
+  position: absolute;
+  background: url(../image/staff-art.png) no-repeat center/contain;
+  width: 290px;
+  height: 150px;
+  top: 550px;
+  left: 200px;
+}
+@media screen and (max-width: 821px) {
+  .staff::after {
+    width: 180px;
+    height: 80px;
+    left: auto;
+    right: 20px;
+    top: 500px;
+  }
+}
+
+/*-------------------------------------------
+「RECRUIT」レイアウト
+-------------------------------------------*/
+.recruit {
+  position: relative;
+}
+.recruit .recruit-inner {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 220px 0;
+  gap: 60px;
+}
+@media screen and (max-width: 821px) {
+  .recruit .recruit-inner {
+    padding: 80px 0;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 112px;
+  }
+}
+.recruit .recruit-inner .recruit-imgWrap {
+  width: 50%;
+}
+@media screen and (max-width: 821px) {
+  .recruit .recruit-inner .recruit-imgWrap {
+    width: 100%;
+  }
+}
+.recruit .recruit-inner .recruit-right {
+  width: 50%;
+}
+@media screen and (max-width: 821px) {
+  .recruit .recruit-inner .recruit-right {
+    width: 100%;
+    padding: 0 15px;
+  }
+}
+.recruit .recruit-inner .recruit-right .recruit-textWrap {
+  margin-right: 170px;
+}
+@media screen and (max-width: 821px) {
+  .recruit .recruit-inner .recruit-right .recruit-textWrap {
+    margin-right: 0;
+  }
+}
+.recruit .recruit-inner .recruit-right .recruit-btn {
+  margin-right: 170px;
+}
+@media screen and (max-width: 821px) {
+  .recruit .recruit-inner .recruit-right .recruit-btn {
+    margin-right: 0;
+  }
+}
+.recruit::before {
+  content: "";
+  display: block;
+  background: url(../image/recruit-art.png) no-repeat center/cover;
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  bottom: 100px;
+  right: 380px;
+}
+@media screen and (max-width: 821px) {
+  .recruit::before {
+    width: 140px;
+    height: 80px;
+    right: 10px;
+    top: 480px;
+    bottom: auto;
+  }
+}
+.recruit::after {
+  content: "";
+  display: block;
+  background: url(../image/recruit-bubble.png) no-repeat center/contain;
+  position: absolute;
+  width: 200px;
+  height: 410px;
+  right: 0;
+  bottom: 20px;
+}
+@media screen and (max-width: 821px) {
+  .recruit::after {
+    width: 80px;
+    height: 120px;
+    bottom: 0;
+    right: 0;
+  }
+}
+
+.js-fadeIn {
+  position: relative;
+  opacity: 0;
+  -webkit-transform: translateY(150px);
+          transform: translateY(150px);
+  -webkit-transition: opacity 2s, -webkit-transform 0.5s ease-in-out;
+  transition: opacity 2s, -webkit-transform 0.5s ease-in-out;
+  transition: opacity 2s, transform 0.5s ease-in-out;
+  transition: opacity 2s, transform 0.5s ease-in-out, -webkit-transform 0.5s ease-in-out;
+}
+
+.js-fadeIn.is-scrollIn {
+  opacity: 1;
+  -webkit-transform: translate(0);
+          transform: translate(0);
+}
+
+/*-------------------------------------------
+「お問い合わせ」レイアウト
+-------------------------------------------*/
+.contact .contact-inner {
+  background: url(../image/contact-bg.png) no-repeat center/cover;
+  width: 100%;
+  height: 356px;
+  margin-bottom: 184px;
+  position: relative;
+}
+@media screen and (max-width: 821px) {
+  .contact .contact-inner {
+    height: 272px;
+    background: url(../image/contact-bg-sp.png) no-repeat center/cover;
+    margin-bottom: 208px;
+  }
+}
+.contact .contact-inner .contact-content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  top: 90px;
+  left: 50%;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  height: 360px;
+  width: 995px;
+  border-radius: 10px;
+  overflow: hidden;
+  -webkit-box-shadow: 4px 4px 10px rgba(39, 43, 48, 0.18);
+          box-shadow: 4px 4px 10px rgba(39, 43, 48, 0.18);
+}
+@media screen and (max-width: 821px) {
+  .contact .contact-inner .contact-content {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+            flex-direction: column-reverse;
+    top: 48px;
+    border-radius: 4px;
+    -webkit-box-shadow: 2px 2px 3px 0px rgba(32, 37, 41, 0.18);
+            box-shadow: 2px 2px 3px 0px rgba(32, 37, 41, 0.18);
+    width: 100%;
+    padding: 24px 15px;
+    border-radius: 0 0 4px 4px;
+  }
+}
+.contact .contact-inner .contact-content .contact-textWrap {
+  width: 50%;
+  padding: 0 42px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 48px;
+  background-color: #fff;
+}
+@media screen and (max-width: 821px) {
+  .contact .contact-inner .contact-content .contact-textWrap {
+    width: 100%;
+    font-size: 15px;
+    line-height: 1.65;
+    padding: 16px 24px;
+  }
+  .contact .contact-inner .contact-content .contact-textWrap .btn-wrap {
+    margin: 0 auto;
+  }
+}
+.contact .contact-inner .contact-content .contact-img {
+  width: 50%;
+}
+.contact .contact-inner .contact-content .contact-imgimg {
+  width: 100%;
+  height: auto;
+}
+@media screen and (max-width: 821px) {
+  .contact .contact-inner .contact-content .contact-img {
+    width: 100%;
+  }
+  .contact .contact-inner .contact-content .contact-imgimg {
+    height: 182px;
+  }
+}
+
+.contact__inner.js-fadeIn {
+  -webkit-transform: translate(-50%, 150px);
+          transform: translate(-50%, 150px);
+}
+
+.contact__inner.js-fadeIn.is-scrollIn {
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+}
+
+/*-------------------------------------------
+「トップアイコン」レイアウト
+-------------------------------------------*/
+.top__icon {
+  position: fixed;
+  right: 15px;
+  bottom: 40px;
+  opacity: 0;
+  z-index: 100;
+}
+
+.top__iconLink {
+  display: inline-block;
+  width: 68px;
+  height: 68px;
+}
+
+/*-------------------------------------------
+footer
+-------------------------------------------*/
+/*除算用にmathモジュールをインポート*/
+/* ここから記述します。 */
+.footer__layout {
+  width: 100%;
+  background: url(../image/footer-bg.png) no-repeat top center/cover;
+  padding-bottom: 24px;
+}
+@media screen and (max-width: 821px) {
+  .footer__layout {
+    background: url(../image/footer-bg-sp.png) no-repeat top center/cover;
+  }
+}
+
+.footer__inner {
+  margin: 0 auto;
+  padding: 168px 196px 0;
+}
+@media screen and (max-width: 821px) {
+  .footer__inner {
+    padding: 73px 15px 24px;
+  }
+}
+
+.footer__wrapUpper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+@media screen and (max-width: 821px) {
+  .footer__wrapUpper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+  }
+}
+
+.footer__wrapUpper a {
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+
+.footer__wrapUpper a:hover {
+  opacity: 0.6;
+}
+
+.footer__logo {
+  width: 93px;
+  height: auto;
+  border-radius: 10px;
+}
+@media screen and (max-width: 821px) {
+  .footer__logo {
+    width: 106px;
+    height: 97px;
+    -o-object-fit: center;
+       object-fit: center;
+    border-radius: 6px;
+  }
+}
+
+.footer__linkWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 26.45px;
+}
+@media screen and (max-width: 821px) {
+  .footer__linkWrap {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 24px;
+    gap: 8px;
+  }
+}
+
+.footer__linkWrap a {
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+@media screen and (max-width: 821px) {
+  .footer__linkWrap a {
+    font-size: 15px;
+  }
+}
+
+.footer__linkWrap a:hover {
+  opacity: 0.6;
+}
+
+.footer__wrapLower {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 56.89px;
+}
+@media screen and (max-width: 821px) {
+  .footer__wrapLower {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 8px;
+  }
+}
+
+.footer__ruleWrap {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 35.55px;
+}
+@media screen and (max-width: 821px) {
+  .footer__ruleWrap {
+    gap: 11.67px;
+  }
+}
+
+.footer__ruleWrap a {
+  -webkit-transition: opacity 0.3s;
+  transition: opacity 0.3s;
+}
+@media screen and (max-width: 821px) {
+  .footer__ruleWrap a {
+    font-size: 15px;
+  }
+}
+
+.footer__ruleWrap a:hover {
+  opacity: 0.6;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  letter-spacing: 0.07em;
+}
+@media screen and (max-width: 821px) {
+  .footer__copyright {
+    margin-top: 32px;
+  }
+}
